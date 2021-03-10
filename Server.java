@@ -1,9 +1,9 @@
 import java.util.*;
-import java.rmi.registry.Registry; 
-import java.rmi.registry.LocateRegistry; 
-import java.rmi.RemoteException; 
-import java.rmi.server.UnicastRemoteObject; 
-import java.rmi.Remote; 
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+import java.rmi.Remote;
 
 
 class Pair{
@@ -22,9 +22,9 @@ class Pair{
             return weight;
         }
     
-        @Override
-        public String toString(){
-            return "Vertex : " + vertex + " Weight : " + weight;
+        // @Override
+        // public String toString(){
+        //     return "Vertex : " + vertex + " Weight : " + weight;
         }
 }
 
