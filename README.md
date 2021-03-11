@@ -43,6 +43,15 @@ The following points summarize how an RMI application works :
 4. The result is passed all the way back to the client.
 ---
 #### Implementation Strategy
+To write an RMI Java application, you would have to follow the steps given below :
+1. Defining a remote interface.
+2. Implementing the remote interface
+3. Creating Stub and Skeleton objects from the implementation class using rmic (rmi complier).
+4. Start the rmiregistry.
+5. Create and execute the server application program.
+6. Create and execute the client application program.
+
+The entire Application is created in two files namely :
 1. **Server.java File**
 2. **Client.java File**
 ---
