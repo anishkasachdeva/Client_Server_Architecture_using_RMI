@@ -18,7 +18,7 @@ Java.
 or  directly compile all the Java files using the command : javac *.java
 3. Start the rmi registry using the command : **rmiregistry**
 4. Open a new window/terminal and start the Server using the command : **java Server**
-5. Open one or more new windows/terminals and start the Clients using the command : **java Client < <input file>**
+5. Open one or more new windows/terminals and start the Clients using the command : j**ava Client < input_file**
 
 ###### Note : Output of the code will be displayed on the terminal.
 ---
