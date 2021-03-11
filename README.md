@@ -4,8 +4,8 @@
 ##### Anishka Sachdeva (2018101112)
 ###### 11th March, 2021
 ---
-#### Question : 
-#### Implement Minimum Spanning Tree using RMI(Remote Method Invocation) in Java
+#### Objective 
+##### Implement Minimum Spanning Tree using RMI(Remote Method Invocation) in Java
 ---
 # Description of Solution
 #### Language Used
@@ -55,8 +55,16 @@ To write an RMI Java application, you would have to follow the steps given below
 
 The entire application is created in two files namely :
 #### Server.java File
-1. Contains 3 major functions : 
+1. It contains the definition od remote interface in the following manner : 
+    1. Create an interface that extends the predefined interface Remote which belongs to the package.
+    2. Declare all the business methods that can be invoked by the client in this interface.
+    3. Since there is a chance of network issues during remote calls, an exception named RemoteException may occur; throw it.
+2. It further contains the implementation of the remote interface in the following manner : 
+    1. Implement the interface created in the previous step.
+    2. Provide implementation to all the abstract methods of the remote interface.
+3. Contains 3 major functions : 
     1. **addGraph**
+        1. 
     2. **addEdge**
     3. **getMst** : This function implements the **Prim's Algorithm** for finding the Minimum Spanning Tree and calculates the minimum cost for it. Explanation of Prim's Algorithm is explained below : 
         1. Prim’s Algorithm uses Greedy approach to find the minimum spanning tree. In Prim’s Algorithm we grow the spanning tree from a starting position. In this algorithm, we add vertex to the growing spanning tree in Prim's.
