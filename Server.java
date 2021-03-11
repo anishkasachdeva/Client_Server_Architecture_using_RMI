@@ -25,8 +25,8 @@ class Pair{
         // @Override
         // public String toString(){
         //     return "Vertex : " + vertex + " Weight : " + weight;
-        }
 }
+
 
 
 interface Mst extends Remote {
