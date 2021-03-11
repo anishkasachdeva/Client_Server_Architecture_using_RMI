@@ -10,7 +10,6 @@ public class Client {
 
         Registry registry = LocateRegistry.getRegistry(null); 
         Mst stub = (Mst) registry.lookup("RMIServer"); 
-        int count = 0;
         while(true) {
             String userInput[] = br.readLine().split(" ");
             String requestType = userInput[0];
