@@ -64,11 +64,11 @@ class MstImpl implements Mst {
    
     Map<String, Graph> map = new HashMap<>();
 
-    // Graph graph;
     public void addGraph(String id, int vertices)throws RemoteException{
         Graph graph = new Graph(vertices);
-        if(!map.containsKey(id))
-            map.put(id, graph);
+        // if(!map.containsKey(id))
+        map.put(id, graph);
+        // System.out.println("Size of Array List " + graph.getAdjListSize());
     }
 
     public void addEdge(String id, int u, int v, int weight)throws RemoteException {
@@ -100,7 +100,6 @@ class MstImpl implements Mst {
             
             int u = pair.getVertex();
             int w = pair.getWeight();
-            // System.out.println(pair);
             if(visited[u-1] == 1)
                 continue;
             
@@ -144,7 +143,7 @@ public class Server extends MstImpl {
 
         System.err.println("Server ready"); 
       } catch (Exception e) { 
-        System.err.println("Server exception: " + e.toString()); 
+        System.err.println("Server exception : " + e.toString()); 
         e.printStackTrace(); 
       } 
    } 

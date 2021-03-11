@@ -17,12 +17,12 @@ public class Client {
             String requestType = userInput[0];
             String id = userInput[1];
 
-            if(requestType.equals("add_graph"))
+            if(requestType.equals("add_graph "))
             {
                 int vertices = Integer.parseInt(userInput[2]);
                 stub.addGraph(id, vertices);
             }
-            else if(requestType.equals("add_edge"))
+            else if(requestType.equals("add_edge "))
             {
                 int u = Integer.parseInt(userInput[2]);
                 int v = Integer.parseInt(userInput[3]);
@@ -30,12 +30,11 @@ public class Client {
                 stub.addEdge(id, u, v, weight);
 
             }
-            else if(requestType.equals("get_mst"))
+            else if(requestType.equals("get_mst "))
             {
                 System.out.println(stub.getMst(id));
             }
         }
-         
       } catch (Exception e) {
          System.err.println("Client exception: " + e.toString()); 
          e.printStackTrace(); 
