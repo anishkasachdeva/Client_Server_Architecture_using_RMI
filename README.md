@@ -18,7 +18,9 @@ Java.
 or  directly compile all the Java files using the command : javac *.java
 3. Start the rmi registry using the command : **rmiregistry**
 4. Open a new window/terminal and start the Server using the command : **java Server**
-5. Open one or more new windows/terminals and start the Clients using the command : **java Client**
+5. Open one or more new windows/terminals and start the Clients using the command : **java Client < <input file>**
+
+###### Note : Output of the code will be displayed on the terminal.
 ---
 
 #### RMI(Remote Method Invocation)
@@ -51,9 +53,34 @@ To write an RMI Java application, you would have to follow the steps given below
 5. Create and execute the server application program.
 6. Create and execute the client application program.
 
-The entire Application is created in two files namely :
-1. **Server.java File**
-2. **Client.java File**
+The entire application is created in two files namely :
+#### Server.java File
+1. Contains 3 major functions : 
+    1. **addGraph**
+    2. **addEdge**
+    3. **getMst** : This function implements the **Prim's Algorithm** for finding the Minimum Spanning Tree and calculates the minimum cost for it. Explanation of Prim's Algorithm is explained below : 
+        1. Prim’s Algorithm uses Greedy approach to find the minimum spanning tree. In Prim’s Algorithm we grow the spanning tree from a starting position. In this algorithm, we add vertex to the growing spanning tree in Prim's.
+        2. Maintain two disjoint sets of vertices. One containing vertices that are in the growing spanning tree and other that are not in the growing spanning tree.
+        3. Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and add it into the growing spanning tree. This can be done using Priority Queues. Insert the vertices, that are connected to growing spanning tree, into the Priority Queue.
+        4. Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the Priority Queue that are not marked.
+#### Client.java File
+1. Created a client class from where we have to invoke the remote object.
+2. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
+3. Fetched the object from the registry using the method **lookup()** of the class Registry which belongs to the package java.rmi.registry. To this method, you need to pass a string value representing the bind (Here I have used **RMISErver**). This will return the remote object.
+4. The lookup() returns an object of type remote, down cast it to the type Mst.
+5. Now, the user input is taken using the BufferedReader Class of java.
+6. The input is splitted by space and the client request type is checked for further processing.
+7. The client requests are handled in the following manner : 
+    1. If the client request corresponds to **add_graph** : Clients can request to add a new graph using ‘add graph <graph identifier> n’. This command will add a new graph on the server with the identifier graph identifier and n number of nodes.
+    2. If the client request corresponds to **add_edge** : Clients can request to add a new edge in a graph using ‘add edge <graph identifier> <u> <v> <w>’. This will add an undirected edge between the nodes u and v with weight w.
+    3. If the client request corresponds to **get_mst** : Clients can request for the total weight of the minimum weight spanning tree in a graph from the
+server using ‘get mst <graph identifier>’. The client will print the solution the server returns. In case the graph does not have a spanning tree, -1 should be printed. A graph with identifier graph identifier
+will already exist.
+8. Once the client request is identified, accordingly the remote methods are invoked by the Stub in the following manner : 
+    1. For **add_graph** : addGraph(String id, int vertices)
+    2. For **add_edge** : addEdge(String id, int u, int v, int weight)
+    3. For **get_mst** : getMst(String id)
+
 ---
 #### Major RMI Commands Used
 **RMI registry** is a namespace on which all server objects are placed. 
