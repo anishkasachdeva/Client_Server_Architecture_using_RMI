@@ -100,7 +100,7 @@ class MstImpl implements Mst {
             
             int u = pair.getVertex();
             int w = pair.getWeight();
-            System.out.println(pair);
+            // System.out.println(pair);
             if(visited[u-1] == 1)
                 continue;
             
