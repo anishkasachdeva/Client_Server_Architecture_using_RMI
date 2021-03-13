@@ -1,13 +1,13 @@
-## Distributed Systems - Assignment 3
-####  Client Server Architecture using RMI (Remote Method Invocation)
+# Distributed Systems - Assignment 3
+###  Client Server Architecture using RMI (Remote Method Invocation)
 ---
 ##### Anishka Sachdeva (2018101112)
 ###### 13th March, 2021
 ---
 ### Objective 
-##### Implement Minimum Spanning Tree using RMI (Remote Method Invocation) in Java
+#### Implement Minimum Spanning Tree using RMI (Remote Method Invocation) in Java
 ---
-# Description of Solution
+## Description of Solution
 ### Language Used
 Java.
 
@@ -71,7 +71,7 @@ The entire application is created in two files namely :
 7. Contains 3 major functions : 
     1. **addGraph**
         1. When the object of the Mst class is created, a hashmap is created where key = graph_identifier and value = object of the class Graph (adjList is the member of the class Graph and as soon as the object of class Graph is created in addGraph function, the constructor of the class Graph is called and adjList is created).
-        2. **Structure of AdjList** : List of lists where every single list(corresponsing to a node u) stores a pair of integers {node v, edge_weight w} if there is an edge between nodes **u** and **v** with weight **w**.
+        2. **Structure of AdjList** : List of lists where every single list (corresponsing to a node u) stores a pair of integers {node v, edge_weight w} if there is an edge between nodes **u** and **v** with weight **w**.
         3. Once the object is created, it is put into the hashmap.
         4. **Note** : If a client requests to add graph with an already existing graph_identifier, the map value shall be replaced with an empty graph for the same graph identifier.
     2. **addEdge**
