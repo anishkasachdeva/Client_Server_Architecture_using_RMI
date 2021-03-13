@@ -9,7 +9,7 @@
 ---
 ## Description of Solution
 ### Language of Implementation
-Java.
+Java
 
 ---
 ### Steps to run the Code
@@ -25,7 +25,7 @@ or  directly compile all the Java files using the command : javac *.java
 
 ### RMI (Remote Method Invocation)
 RMI stands for **Remote Method Invocation**. It is a mechanism that allows an object residing in one system (JVM) to access/invoke an object running on another JVM.
-RMI is used to build distributed applications; it provides remote communication between Java programs. It is provided in the package java.rmi.
+RMI is used to build distributed applications; it provides remote communication between Java programs. It is provided in the package **java.rmi**.
 
 ---
 
@@ -65,8 +65,8 @@ The entire application is created in two files namely :
     1. Implement the interface created in the previous step.
     2. Provide implementation to all the abstract methods of the remote interface.
 3. This file creates a remote object by instantiating the implementation class.
-4. Exported the remote object using the method **exportObject()** of the class named **UnicastRemoteObject** which belongs to the package java.rmi.server.
-5. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
+4. Exported the remote object using the method **exportObject()** of the class named **UnicastRemoteObject** which belongs to the package **java.rmi.server**.
+5. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package **java.rmi.registry**.
 6. Bind the remote object created to the registry using the **bind()** method of the class named **Registry**. To this method, pass a string representing the bind name and the object exported, as parameters (Here I have used **RMIServer**).
 7. Contains 3 major functions : 
     1. **addGraph**
@@ -87,8 +87,8 @@ The entire application is created in two files namely :
         5. **Note** -  To check the case of -1, we check the visited array. We iterate the visited array and if a vertex remains unvisited, the minimum cost of MST is reported as -1.
 #### Client.java File
 1. Created a client class from where we have to invoke the remote object.
-2. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
-3. Fetched the object from the registry using the method **lookup()** of the class Registry which belongs to the package java.rmi.registry. To this method, you need to pass a string value representing the bind (Here I have used **RMIServer**). This will return the remote object.
+2. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package **java.rmi.registry**.
+3. Fetched the object from the registry using the method **lookup()** of the class Registry which belongs to the package **java.rmi.registry**. To this method, you need to pass a string value representing the bind (Here I have used **RMIServer**). This will return the remote object.
 4. The lookup() returns an object of type remote, down cast it to the type Mst.
 5. Now, the user input is taken using the BufferedReader Class of java.
 6. The input is splitted by space and the client request type is checked for further processing.
