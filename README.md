@@ -27,6 +27,8 @@ or  directly compile all the Java files using the command : javac *.java
 RMI stands for **Remote Method Invocation**. It is a mechanism that allows an object residing in one system (JVM) to access/invoke an object running on another JVM.
 RMI is used to build distributed applications; it provides remote communication between Java programs. It is provided in the package java.rmi.
 
+---
+
 #### High-Level RMI Architecture
 In an RMI application, we write two programs, a server program (resides on the server) and a client program (resides on the client).
 1. Inside the server program, a remote object is created and reference of that object is made available for the client (using the registry).
@@ -34,7 +36,7 @@ In an RMI application, we write two programs, a server program (resides on the s
 
 Let's talk about two essential components of this architecture. 
 1. **Stub** : A stub is a representation (proxy) of the remote object at client. It resides in the client system; it acts as a gateway for the client program.
-2. **Skeleton** : This is the object which resides on the server side. stub communicates with this skeleton to pass request to the remote object.
+2. **Skeleton** : This is the object which resides on the server side. Stub communicates with this skeleton to pass request to the remote object.
 
 ---
 #### Working of RMI
@@ -45,7 +47,7 @@ The following points summarize how an RMI application works :
 4. The result is passed all the way back to the client.
 ---
 #### Implementation Strategy
-To write an RMI Java application, you would have to follow the steps given below :
+To write an RMI Java application, we follow the steps given below :
 1. Defining a remote interface.
 2. Implementing the remote interface
 3. Creating Stub and Skeleton objects from the implementation class using rmic (rmi complier).
@@ -62,15 +64,27 @@ The entire application is created in two files namely :
 2. It further contains the implementation of the remote interface in the following manner : 
     1. Implement the interface created in the previous step.
     2. Provide implementation to all the abstract methods of the remote interface.
-3. Contains 3 major functions : 
+3. This file creates a remote object by instantiating the implementation class.
+4. Exported the remote object using the method **exportObject()** of the class named **UnicastRemoteObject** which belongs to the package java.rmi.server.
+5. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
+6. Bind the remote object created to the registry using the **bind()** method of the class named **Registry**. To this method, pass a string representing the bind name and the object exported, as parameters (Here I have used **RMISErver**).
+7. Contains 3 major functions : 
     1. **addGraph**
-        1. 
+        1. When the object of the Mst class is created, a hashmap is created where key = graph_identifier and value = object of the class Graph (adjList is the member of the class Graph and as soon as the object of class Graph is created in addGraph function, the constructor of the class Graph is called and adjList is created).
+        2. **Structure of AdjList** : List of lists where every single list(corresponsing to a node u) stores a pair of integers {node v, edge_weight w} if there is an edge between nodes **u** and **v** with weight **w**.
+        3. Once the object is created, it is put into the hashmap.
+        4. **Note** : If a client requests to add graph with an already existing graph_identifier, the map value shall be replaced with an empty graph for the same graph identifier.
     2. **addEdge**
+        1. The graph identifier helps getting the Graph object from the map.
+        2. Now the edge is created with the help of the class Pair. And the edge is added in the following manner : 
+            1. Pair (v, weight) is added to the list corresponding with node u.
+            2. Pair (u, weight) is added to the list corresponding with node v. 
     3. **getMst** : This function implements the **Prim's Algorithm** for finding the Minimum Spanning Tree and calculates the minimum cost for it. Explanation of Prim's Algorithm is explained below : 
         1. Prim’s Algorithm uses Greedy approach to find the minimum spanning tree. In Prim’s Algorithm we grow the spanning tree from a starting position. In this algorithm, we add vertex to the growing spanning tree in Prim's.
         2. Maintain two disjoint sets of vertices. One containing vertices that are in the growing spanning tree and other that are not in the growing spanning tree.
         3. Select the cheapest vertex that is connected to the growing spanning tree and is not in the growing spanning tree and add it into the growing spanning tree. This can be done using Priority Queues. Insert the vertices, that are connected to growing spanning tree, into the Priority Queue.
         4. Check for cycles. To do that, mark the nodes which have been already selected and insert only those nodes in the Priority Queue that are not marked.
+        5. **Note** -  To check the case of -1, we check the visited array. We iterate the visited array and if a vertex remains unvisited, the minimum cost of MST is reported as -1.
 #### Client.java File
 1. Created a client class from where we have to invoke the remote object.
 2. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
