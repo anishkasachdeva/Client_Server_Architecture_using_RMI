@@ -1,14 +1,14 @@
 # Distributed Systems - Assignment 3
 ###  Client Server Architecture using RMI (Remote Method Invocation)
 ---
-##### Anishka Sachdeva (2018101112)
+#### Anishka Sachdeva (2018101112)
 ###### 13th March, 2021
 ---
 ### Objective 
 #### Implement Minimum Spanning Tree using RMI (Remote Method Invocation) in Java
 ---
 ## Description of Solution
-### Language Used
+### Language of Implementation
 Java.
 
 ---
@@ -23,7 +23,7 @@ or  directly compile all the Java files using the command : javac *.java
 ###### Note : Output of the code will be displayed on the terminal.
 ---
 
-### RMI(Remote Method Invocation)
+### RMI (Remote Method Invocation)
 RMI stands for **Remote Method Invocation**. It is a mechanism that allows an object residing in one system (JVM) to access/invoke an object running on another JVM.
 RMI is used to build distributed applications; it provides remote communication between Java programs. It is provided in the package java.rmi.
 
