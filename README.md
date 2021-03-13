@@ -2,17 +2,17 @@
 ####  Client Server Architecture using RMI (Remote Method Invocation)
 ---
 ##### Anishka Sachdeva (2018101112)
-###### 11th March, 2021
+###### 13th March, 2021
 ---
-#### Objective 
-##### Implement Minimum Spanning Tree using RMI(Remote Method Invocation) in Java
+### Objective 
+##### Implement Minimum Spanning Tree using RMI (Remote Method Invocation) in Java
 ---
 # Description of Solution
-#### Language Used
+### Language Used
 Java.
 
 ---
-#### Steps to run the Code
+### Steps to run the Code
 1. Compile the server program : **javac Server.java**
 2. Compile the client program : **javac Client.java**
 or  directly compile all the Java files using the command : javac *.java
@@ -23,13 +23,13 @@ or  directly compile all the Java files using the command : javac *.java
 ###### Note : Output of the code will be displayed on the terminal.
 ---
 
-#### RMI(Remote Method Invocation)
+### RMI(Remote Method Invocation)
 RMI stands for **Remote Method Invocation**. It is a mechanism that allows an object residing in one system (JVM) to access/invoke an object running on another JVM.
 RMI is used to build distributed applications; it provides remote communication between Java programs. It is provided in the package java.rmi.
 
 ---
 
-#### High-Level RMI Architecture
+### High-Level RMI Architecture
 In an RMI application, we write two programs, a server program (resides on the server) and a client program (resides on the client).
 1. Inside the server program, a remote object is created and reference of that object is made available for the client (using the registry).
 2. The client program requests the remote objects on the server and tries to invoke its methods.
@@ -39,14 +39,14 @@ Let's talk about two essential components of this architecture.
 2. **Skeleton** : This is the object which resides on the server side. Stub communicates with this skeleton to pass request to the remote object.
 
 ---
-#### Working of RMI
+### Working of RMI
 The following points summarize how an RMI application works :
 1. When the client makes a call to the remote object, it is received by the stub which eventually passes this request to the RRL.
 2. When the client-side RRL receives the request, it invokes a method called invoke() of the object remoteRef. It passes the request to the RRL on the server side.
 3. The RRL on the server side passes the request to the Skeleton (proxy on the server) which finally invokes the required object on the server.
 4. The result is passed all the way back to the client.
 ---
-#### Implementation Strategy
+### Implementation Strategy
 To write an RMI Java application, we follow the steps given below :
 1. Defining a remote interface.
 2. Implementing the remote interface
@@ -67,7 +67,7 @@ The entire application is created in two files namely :
 3. This file creates a remote object by instantiating the implementation class.
 4. Exported the remote object using the method **exportObject()** of the class named **UnicastRemoteObject** which belongs to the package java.rmi.server.
 5. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
-6. Bind the remote object created to the registry using the **bind()** method of the class named **Registry**. To this method, pass a string representing the bind name and the object exported, as parameters (Here I have used **RMISErver**).
+6. Bind the remote object created to the registry using the **bind()** method of the class named **Registry**. To this method, pass a string representing the bind name and the object exported, as parameters (Here I have used **RMIServer**).
 7. Contains 3 major functions : 
     1. **addGraph**
         1. When the object of the Mst class is created, a hashmap is created where key = graph_identifier and value = object of the class Graph (adjList is the member of the class Graph and as soon as the object of class Graph is created in addGraph function, the constructor of the class Graph is called and adjList is created).
@@ -88,7 +88,7 @@ The entire application is created in two files namely :
 #### Client.java File
 1. Created a client class from where we have to invoke the remote object.
 2. Got the RMI registry using the **getRegistry()** method of the **LocateRegistry** class which belongs to the package java.rmi.registry.
-3. Fetched the object from the registry using the method **lookup()** of the class Registry which belongs to the package java.rmi.registry. To this method, you need to pass a string value representing the bind (Here I have used **RMISErver**). This will return the remote object.
+3. Fetched the object from the registry using the method **lookup()** of the class Registry which belongs to the package java.rmi.registry. To this method, you need to pass a string value representing the bind (Here I have used **RMIServer**). This will return the remote object.
 4. The lookup() returns an object of type remote, down cast it to the type Mst.
 5. Now, the user input is taken using the BufferedReader Class of java.
 6. The input is splitted by space and the client request type is checked for further processing.
@@ -104,7 +104,7 @@ will already exist.
     3. For **get_mst** : getMst(String id)
 
 ---
-#### Major RMI Commands Used
+### Major RMI Commands Used
 **RMI registry** is a namespace on which all server objects are placed. 
 1. **bind or rebind** : Each time the server creates an object, it registers this object with the RMIregistry (using bind() or reBind() methods). These are registered using a unique name known as bind name.
 2. **lookup** : To invoke a remote object, the client needs a reference of that object. At that time, the client fetches the object from the registry using its bind name (using lookup() method).
