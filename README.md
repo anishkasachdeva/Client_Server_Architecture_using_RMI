@@ -96,8 +96,7 @@ The entire application is created in two files namely :
     1. If the client request corresponds to **add_graph** : Clients can request to add a new graph using ‘add graph <graph identifier> n’. This command will add a new graph on the server with the identifier graph identifier and n number of nodes.
     2. If the client request corresponds to **add_edge** : Clients can request to add a new edge in a graph using ‘add edge <graph identifier> <u> <v> <w>’. This will add an undirected edge between the nodes u and v with weight w.
     3. If the client request corresponds to **get_mst** : Clients can request for the total weight of the minimum weight spanning tree in a graph from the
-server using ‘get mst <graph identifier>’. The client will print the solution the server returns. In case the graph does not have a spanning tree, -1 should be printed. A graph with identifier graph identifier
-will already exist.
+server using ‘get mst <graph identifier>’. The client will print the solution the server returns. In case the graph does not have a spanning tree, -1 should be printed. A graph with identifier graph identifier will already exist.
 8. Once the client request is identified, accordingly the remote methods are invoked by the Stub in the following manner : 
     1. For **add_graph** : addGraph(String id, int vertices)
     2. For **add_edge** : addEdge(String id, int u, int v, int weight)
